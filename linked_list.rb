@@ -1,5 +1,3 @@
-require 'pry'
-
 # Full list and its methods.
 class LinkedList
   attr_accessor :head, :tail, :size
