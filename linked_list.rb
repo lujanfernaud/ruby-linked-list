@@ -1,5 +1,6 @@
 require 'pry'
 
+# Full list and its methods.
 class LinkedList
   attr_accessor :head, :tail, :size
 
@@ -9,6 +10,7 @@ class LinkedList
     @size = 0
   end
 
+  # Adds a new node to the end of the list.
   def append(node)
     @size += 1
 
@@ -21,6 +23,7 @@ class LinkedList
     @tail = node
   end
 
+  # Adds a new node to the start of the list.
   def prepend(node)
     @size += 1
 
@@ -33,6 +36,7 @@ class LinkedList
     end
   end
 
+  # Returns a hash with indexes as keys and nodes as values.
   def indexed_list
     indexed_list = {}
     node = @head
@@ -45,11 +49,13 @@ class LinkedList
     indexed_list
   end
 
+  # Returns the node at the given index.
   def at(index)
     return if index >= @size
     indexed_list[index]
   end
 
+  # Removes and returns the last element from the list.
   def pop
     old_tail = @tail
     new_tail = at(@size - 2)
@@ -63,15 +69,19 @@ class LinkedList
     old_tail
   end
 
+  # Returns true if the passed in value is in the list.
   def contains?(value)
     indexed_list.any? { |_key, node| node.value == value }
   end
 
+  # Returns the index of the node containing data, or nil if not found.
   def find(data)
     result = indexed_list.select { |i, node| return i if node.value == data }
     result.empty? ? nil : result
   end
 
+  # Represent the LinkedList objects as strings.
+  # ( data ) -> ( data ) -> ( data ) -> nil
   def to_s
     indexed_list.values.each do |node|
       print "( #{node.value} )"
@@ -81,6 +91,7 @@ class LinkedList
   end
 end
 
+# Node structure.
 class Node
   attr_accessor :value, :next_node
 
