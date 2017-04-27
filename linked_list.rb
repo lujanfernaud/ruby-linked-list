@@ -134,8 +134,13 @@ list.append(9)
 
 p list.at(4) # => #<Node:0x00000000af9ce0 @value=9, @next_node=nil>
 
-p list.head
-p list.tail
+p list.head # => #<Node:0x00000002eda560 @value=1, @next_node=
+                 #<Node:0x00000002eda5d8 @value=3, @next_node=
+                 #<Node:0x00000002eda5b0 @value=5, @next_node=
+                 #<Node:0x00000002eda588 @value=6, @next_node=
+                 #<Node:0x00000002eda538 @value=9, @next_node=nil>>>>>
+
+p list.tail # => #<Node:0x00000002eda538 @value=9, @next_node=nil>
 
 p list.contains?(9) # => true
 p list.find(9) # => 4
