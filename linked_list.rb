@@ -11,7 +11,8 @@ class LinkedList
   end
 
   # Adds a new node to the end of the list.
-  def append(node)
+  def append(value)
+    node = Node.new(value)
     @size += 1
 
     if @head.nil?
@@ -24,16 +25,17 @@ class LinkedList
   end
 
   # Adds a new node to the start of the list.
-  def prepend(node)
+  def prepend(value)
+    node = Node.new(value)
     @size += 1
 
     if @head.nil?
-      @head = node
       @tail = node
     else
       node.next_node = @head
-      @head = node
     end
+
+    @head = node
   end
 
   # Returns a hash with indexes as keys and nodes as values.
@@ -124,11 +126,11 @@ class Node
 end
 
 list = LinkedList.new
-list.append(Node.new(3))
-list.append(Node.new(5))
-list.append(Node.new(6))
-list.prepend(Node.new(1))
-list.append(Node.new(9))
+list.append(3)
+list.append(5)
+list.append(6)
+list.prepend(1)
+list.append(9)
 
 p list.at(4) # => #<Node:0x00000000af9ce0 @value=9, @next_node=nil>
 
