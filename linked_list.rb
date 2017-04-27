@@ -36,6 +36,18 @@ class LinkedList
   def size
     @nodes
   end
+
+  def at(index)
+    nodes = {}
+    node  = @head
+
+    @nodes.times do |idx|
+      nodes[idx] = node
+      node       = node.next_node
+    end
+
+    nodes[index]
+  end
 end
 
 class Node
@@ -52,6 +64,8 @@ list.append(Node.new(1))
 list.append(Node.new(2))
 list.append(Node.new(3))
 list.prepend(Node.new(0))
+list.append(Node.new(9))
+list.at(4)
 
 p list.head
 p list.tail
