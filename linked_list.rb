@@ -90,6 +90,7 @@ class LinkedList
     end
   end
 
+  # Inserts the data at the given index.
   def insert_at(index, value)
     old_node     = at(index)
     earlier_node = at(index - 1)
@@ -98,6 +99,17 @@ class LinkedList
     @size += 1
     new_node.next_node     = old_node
     earlier_node.next_node = new_node
+  end
+
+  # Removes the data at the given index.
+  def remove_at(index)
+    old_node     = at(index)
+    earlier_node = at(index - 1)
+    later_node   = at(index + 1)
+
+    @size -= 1
+    earlier_node.next_node = later_node
+    old_node.next_node     = nil
   end
 end
 
@@ -134,9 +146,14 @@ p list.size
 p list.tail
 p list.pop
 
-puts list
+puts list # => ( 1 ) -> ( 3 ) -> ( 5 ) -> nil
 
 p list.insert_at(2, 7)
-puts list
+puts list # => ( 1 ) -> ( 3 ) -> ( 7 ) -> ( 5 ) -> nil
 p list.insert_at(1, 11)
-puts list
+puts list # => ( 1 ) -> ( 11 ) -> ( 3 ) -> ( 7 ) -> ( 5 ) -> nil
+
+p list.remove_at(1)
+puts list # => ( 1 ) -> ( 3 ) -> ( 7 ) -> ( 5 ) -> nil
+p list.remove_at(2)
+puts list # => ( 1 ) -> ( 3 ) -> ( 5 ) -> nil
