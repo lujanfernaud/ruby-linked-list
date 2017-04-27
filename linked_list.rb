@@ -89,6 +89,16 @@ class LinkedList
       print "nil\n" if node.next_node.nil?
     end
   end
+
+  def insert_at(index, value)
+    old_node     = at(index)
+    earlier_node = at(index - 1)
+    new_node     = Node.new(value)
+
+    @size += 1
+    new_node.next_node     = old_node
+    earlier_node.next_node = new_node
+  end
 end
 
 # Node structure.
@@ -124,4 +134,9 @@ p list.size
 p list.tail
 p list.pop
 
-puts list # => ( 1 ) -> ( 3 ) -> ( 5 ) -> nil
+puts list
+
+p list.insert_at(2, 7)
+puts list
+p list.insert_at(1, 11)
+puts list
