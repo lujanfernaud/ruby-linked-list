@@ -66,6 +66,11 @@ class LinkedList
   def contains?(value)
     indexed_list.any? { |_key, node| node.value == value }
   end
+
+  def find(data)
+    result = indexed_list.select { |i, node| return i if node.value == data }
+    result.empty? ? nil : result
+  end
 end
 
 class Node
@@ -78,22 +83,24 @@ class Node
 end
 
 list = LinkedList.new
-list.append(Node.new(1))
-list.append(Node.new(2))
 list.append(Node.new(3))
-list.prepend(Node.new(0))
+list.append(Node.new(5))
+list.append(Node.new(6))
+list.prepend(Node.new(1))
 list.append(Node.new(9))
 list.at(4)
 
 p list.head
 p list.tail
 
-p list.size
-p list.tail
-p list.pop
+p list.contains?(9)
+p list.find(9)
+p list.find(10)
 
 p list.size
 p list.tail
 p list.pop
 
-p list.contains?(2)
+p list.size
+p list.tail
+p list.pop
