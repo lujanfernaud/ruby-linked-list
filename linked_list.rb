@@ -71,6 +71,14 @@ class LinkedList
     result = indexed_list.select { |i, node| return i if node.value == data }
     result.empty? ? nil : result
   end
+
+  def to_s
+    indexed_list.values.each do |node|
+      print "( #{node.value} )"
+      print " -> "
+      print "nil\n" if node.next_node.nil?
+    end
+  end
 end
 
 class Node
@@ -104,3 +112,5 @@ p list.pop
 p list.size
 p list.tail
 p list.pop
+
+puts list # => ( 1 ) -> ( 3 ) -> ( 5 ) -> nil
