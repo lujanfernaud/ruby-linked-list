@@ -1,7 +1,3 @@
-# Project: Linked list in Ruby for The Odin Project
-# Author: Luján Fernaud
-# Url: http://www.theodinproject.com/courses/ruby-programming/lessons/linked-lists
-
 require 'pry'
 
 class LinkedList
@@ -18,11 +14,11 @@ class LinkedList
 
     if @head.nil?
       @head = node
-      @tail = node
     else
-      @tail.next_node = node.value
-      @tail = node
+      @tail.next_node = node
     end
+
+    @tail = node
   end
 
   def prepend(node)
@@ -32,7 +28,7 @@ class LinkedList
       @head = node
       @tail = node
     else
-      node.next_node = @head.value
+      node.next_node = @head
       @head = node
     end
   end
