@@ -141,7 +141,8 @@ p list.head # => #<Node:0x00000002eda560 @value=1, @next_node=
 
 p list.tail # => #<Node:0x00000002eda538 @value=9, @next_node=nil>
 
-p list.at(4) # => #<Node:0x00000000af9ce0 @value=9, @next_node=nil>
+p list.at(3) # => #<Node:0x000000016d0f00 @value=6, @next_node=
+                  #<Node:0x000000016d0eb0 @value=9, @next_node=nil>>
 
 p list.contains?(9) # => true
 p list.find(9) # => 4
@@ -157,12 +158,14 @@ p list.pop # => #<Node:0x000000016437e0 @value=6, @next_node=nil>
 
 puts list # => ( 1 ) -> ( 3 ) -> ( 5 ) -> nil
 
-p list.insert_at(2, 7)
+list.insert_at(2, 7)
 puts list # => ( 1 ) -> ( 3 ) -> ( 7 ) -> ( 5 ) -> nil
-p list.insert_at(1, 11)
+
+list.insert_at(1, 11)
 puts list # => ( 1 ) -> ( 11 ) -> ( 3 ) -> ( 7 ) -> ( 5 ) -> nil
 
-p list.remove_at(1)
+list.remove_at(1)
 puts list # => ( 1 ) -> ( 3 ) -> ( 7 ) -> ( 5 ) -> nil
-p list.remove_at(2)
+
+list.remove_at(2)
 puts list # => ( 1 ) -> ( 3 ) -> ( 5 ) -> nil
