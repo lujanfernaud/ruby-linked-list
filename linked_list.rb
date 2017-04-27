@@ -1,16 +1,16 @@
 require 'pry'
 
 class LinkedList
-  attr_reader :head, :tail
+  attr_accessor :head, :tail, :size
 
   def initialize
-    @head  = nil
-    @tail  = nil
-    @nodes = 0
+    @head = nil
+    @tail = nil
+    @size = 0
   end
 
   def append(node)
-    @nodes += 1
+    @size += 1
 
     if @head.nil?
       @head = node
@@ -22,7 +22,7 @@ class LinkedList
   end
 
   def prepend(node)
-    @nodes += 1
+    @size += 1
 
     if @head.nil?
       @head = node
@@ -33,20 +33,31 @@ class LinkedList
     end
   end
 
-  def size
-    @nodes
-  end
-
   def at(index)
-    nodes = {}
-    node  = @head
+    indexed_list = {}
+    node = @head
 
-    @nodes.times do |idx|
-      nodes[idx] = node
-      node       = node.next_node
+    return if index >= @size
+
+    @size.times do |idx|
+      indexed_list[idx] = node
+      node = node.next_node
     end
 
-    nodes[index]
+    indexed_list[index]
+  end
+
+  def pop
+    old_tail = @tail
+    new_tail = at(@size - 2)
+
+    return if new_tail.nil?
+    new_tail.next_node = nil
+
+    @tail  = new_tail
+    @size -= 1
+
+    old_tail
   end
 end
 
@@ -69,4 +80,11 @@ list.at(4)
 
 p list.head
 p list.tail
+
 p list.size
+p list.tail
+p list.pop
+
+p list.size
+p list.tail
+p list.pop
