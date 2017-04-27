@@ -33,17 +33,20 @@ class LinkedList
     end
   end
 
-  def at(index)
+  def indexed_list
     indexed_list = {}
     node = @head
-
-    return if index >= @size
 
     @size.times do |idx|
       indexed_list[idx] = node
       node = node.next_node
     end
 
+    indexed_list
+  end
+
+  def at(index)
+    return if index >= @size
     indexed_list[index]
   end
 
@@ -58,6 +61,10 @@ class LinkedList
     @size -= 1
 
     old_tail
+  end
+
+  def contains?(value)
+    indexed_list.any? { |_key, node| node.value == value }
   end
 end
 
@@ -88,3 +95,5 @@ p list.pop
 p list.size
 p list.tail
 p list.pop
+
+p list.contains?(2)
