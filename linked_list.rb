@@ -129,22 +129,23 @@ list.append(Node.new(5))
 list.append(Node.new(6))
 list.prepend(Node.new(1))
 list.append(Node.new(9))
-list.at(4)
+
+p list.at(4) # => #<Node:0x00000000af9ce0 @value=9, @next_node=nil>
 
 p list.head
 p list.tail
 
-p list.contains?(9)
-p list.find(9)
-p list.find(10)
+p list.contains?(9) # => true
+p list.find(9) # => 4
+p list.find(10) # => nil
 
-p list.size
-p list.tail
-p list.pop
+p list.size # => 5
+p list.tail # => #<Node:0x00000001643740 @value=9, @next_node=nil>
+p list.pop # => #<Node:0x00000001643740 @value=9, @next_node=nil>
 
-p list.size
-p list.tail
-p list.pop
+p list.size # => 4
+p list.tail # => #<Node:0x000000016437e0 @value=6, @next_node=nil>
+p list.pop # => #<Node:0x000000016437e0 @value=6, @next_node=nil>
 
 puts list # => ( 1 ) -> ( 3 ) -> ( 5 ) -> nil
 
