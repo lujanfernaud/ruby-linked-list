@@ -1,4 +1,4 @@
-# Full list and its methods.
+# Full list and methods.
 class LinkedList
   attr_accessor :head, :tail, :size
 
@@ -34,20 +34,6 @@ class LinkedList
     end
 
     @head = node
-  end
-
-  # Removes and returns the last element from the list.
-  def pop
-    old_tail = @tail
-    new_tail = at(@size - 2)
-
-    return if new_tail.nil?
-    new_tail.next_node = nil
-
-    @tail  = new_tail
-    @size -= 1
-
-    old_tail
   end
 
   # Returns a hash with indexes as keys and nodes as values.
@@ -89,6 +75,20 @@ class LinkedList
     @size -= 1
     earlier_node.next_node = later_node
     old_node.next_node     = nil
+  end
+
+  # Removes and returns the last element from the list.
+  def pop
+    old_tail = @tail
+    new_tail = at(@size - 2)
+
+    return if new_tail.nil?
+    new_tail.next_node = nil
+
+    @tail  = new_tail
+    @size -= 1
+
+    old_tail
   end
 
   # Returns true if the passed in value is in the list.
